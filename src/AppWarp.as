@@ -17,8 +17,8 @@ import com.shephertz.appwarp.types.ResultCode;
 
 import flash.utils.ByteArray;
 
-var APIKEY:String = "90d50de6c0e7fb3c887f5a6317a4c7695f0121ffe6051f2f9ad28349ff9e2a09";
-var SECRETEKEY:String = "bb0df91101188da293c72949c92237386076fe6c18db14577d046e3cba95d6bc";
+var APIKEY:String = "Your API Key";
+var SECRETEKEY:String = "Your Secret Key";
 var Connected:Boolean = false;
 var INITIALIZED:Boolean = false;
 var client:WarpClient;
@@ -35,7 +35,7 @@ class connectionListener implements ConnectionRequestListener
 		connectFunc = f;
 	}
 	
-	public function onConnectDone(res:int):void
+	public function onConnectDone(res:int, reason:int):void
 	{
 		if(res == ResultCode.success)
 		{
@@ -52,6 +52,11 @@ class connectionListener implements ConnectionRequestListener
 	public function onDisConnectDone(res:int):void
 	{
 		Connected = false;
+	}
+	
+	public function onInitUDPDone(res:int):void
+	{
+		
 	}
 }
 
@@ -218,7 +223,7 @@ class notifylistener implements NotificationListener
 			msgFunc(obj);
 		}
 	}
-	public function onUpdatePeersReceived(update:ByteArray):void
+	public function onUpdatePeersReceived(update:ByteArray, isUDP:Boolean):void
 	{
 			
 	}
@@ -230,11 +235,35 @@ class notifylistener implements NotificationListener
 	{
 		
 	}
+	public function onPrivateUpdateReceived(sender:String, update:ByteArray, isUDP:Boolean):void
+	{
+		
+	}
 	public function onUserChangeRoomProperties(room:Room, user:String,properties:Object, lockTable:Object):void
 	{
 		
 	}
 	public function onMoveCompleted(move:Move):void
+	{
+		
+	}
+	public function onUserPaused(locid:String, isLobby:Boolean, username:String):void
+	{
+		
+	}
+	public function onUserResumed(locid:String, isLobby:Boolean, username:String):void
+	{
+		
+	}
+	public function onGameStarted(sender:String, roomid:String, nextTurn:String):void
+	{
+		
+	}
+	public function onGameStopped(sender:String, roomid:String):void
+	{
+		
+	}
+	public function onNextTurnRequest(lastTurn:String):void
 	{
 		
 	}
